@@ -1,4 +1,4 @@
-# Sybersecurity Project
+# Cybersecurity Project
 
 ## Tech Stack
 
