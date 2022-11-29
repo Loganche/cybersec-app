@@ -1,3 +1,7 @@
+![Tests](https://github.com/Loganche/cybersec-app/actions/workflows/tests.yml/badge.svg)
+![Vulnerabilities](https://github.com/Loganche/cybersec-app/actions/workflows/codeql.yml/badge.svg)
+![Dependencies](https://github.com/Loganche/cybersec-app/actions/workflows/dependency-review.yml/badge.svg)
+
 # Cybersecurity Project
 
 ## Tech Stack
