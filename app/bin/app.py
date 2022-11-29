@@ -1,10 +1,10 @@
-import os
-import logging
 import logging.handlers
+import os
 from pathlib import PurePath
 
-from fastapi import FastAPI, Depends
 from dotenv import load_dotenv
+from fastapi import Depends
+from fastapi import FastAPI
 
 from app.routers import auth
 
@@ -14,7 +14,7 @@ logging.basicConfig(
         # logging.handlers.RotatingFileHandler('errors.log', maxBytes=10485760, backupCount=10),
         logging.StreamHandler(),
     ],
-    format="%(asctime)-15s %(levelname)8s %(process)6d %(name)s %(message)s",
+    format='%(asctime)-15s %(levelname)8s %(process)6d %(name)s %(message)s',
 )
 
 # ../../.env
@@ -24,6 +24,6 @@ if not load_dotenv(env_path):
 
 app = FastAPI(
     title='Cybersecurity Project',
-    version='1.0'
+    version='1.0',
 )
 app.include_router(auth.router)
