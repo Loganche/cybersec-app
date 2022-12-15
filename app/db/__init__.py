@@ -1,9 +1,15 @@
-fake_users_db = {
-    'johndoe': {
-        'username': 'johndoe',
-        'full_name': 'John Doe',
-        'email': 'johndoe@example.com',
-        'hashed_password': '$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW',
-        'disabled': False,
-    },
-}
+import os
+
+import databases
+import sqlalchemy
+
+database = databases.Database(os.environ['SQLITE_DB_URL'])
+
+metadata = sqlalchemy.MetaData()
+
+
+engine = sqlalchemy.create_engine(
+    os.environ['SQLITE_DB_URL'], connect_args={'check_same_thread': False},
+)
+
+metadata.create_all(engine)

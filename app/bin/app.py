@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from sentry_sdk.integrations.sqlalchemy import SqlalchemyIntegration
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     handlers=[
         # logging.handlers.RotatingFileHandler('errors.log', maxBytes=10485760, backupCount=10),
         logging.StreamHandler(),
@@ -34,7 +34,7 @@ sentry_sdk.init(
 )
 
 
-from app.routers import auth, invest
+from app.routers import auth, invest, db
 
 app = FastAPI(
     title='Cybersecurity Project',
@@ -42,3 +42,4 @@ app = FastAPI(
 )
 app.include_router(auth.router)
 app.include_router(invest.router)
+app.include_router(db.router)

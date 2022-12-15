@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel
 
 
@@ -8,14 +10,24 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str | None = None
+    scopes: List[str] = []
 
 
-class User(BaseModel):
+class UserBase(BaseModel):
     username: str
-    email: str | None = None
-    full_name: str | None = None
-    disabled: bool | None = None
+    email: str
 
 
-class UserInDB(User):
-    hashed_password: str
+class UserCreate(UserBase):
+    password: str
+
+
+class User(UserBase):
+    id: int
+    username: str
+    email: str
+    disabled: bool
+    password: str
+
+    class Config:
+        orm_mode = True

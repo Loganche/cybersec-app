@@ -5,8 +5,8 @@ from tinkoff.invest import AsyncClient
 from tinkoff.invest.constants import INVEST_GRPC_API
 from tinkoff.invest.constants import INVEST_GRPC_API_SANDBOX
 
-TOKEN = os.environ['TINKOFF_TOKEN_PROD_READONLY']
-TOKEN_SANDBOX = os.environ['TINKOFF_TOKEN_SANDBOX']
+TOKEN = 'ABC'  # os.environ['TINKOFF_TOKEN_PROD_READONLY']
+TOKEN_SANDBOX = 'ABC'  # os.environ['TINKOFF_TOKEN_SANDBOX']
 
 
 async def get_accounts():
