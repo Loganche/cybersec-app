@@ -17,6 +17,7 @@
 - Flask-admin
 - SQlite (for now)
 - Tinkoff APIs
+- Sentry
 
 ---
 
