@@ -15,3 +15,6 @@ run_prod:
 test:
 	tox
 	coverage html
+
+load_test:
+	locust

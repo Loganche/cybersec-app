@@ -1,4 +1,5 @@
 flake8
+locust
 pre-commit
 pytest
 pytest-cov
