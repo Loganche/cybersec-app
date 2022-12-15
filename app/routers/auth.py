@@ -1,6 +1,7 @@
 import os
 from datetime import timedelta
 
+import sentry_sdk
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
@@ -20,7 +21,11 @@ router = APIRouter(
 )
 
 
-@router.post('/token', response_model=Token)
+@router.post(
+    '/token',
+    response_model=Token,
+    status_code=status.HTTP_202_ACCEPTED,
+)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(fake_users_db, form_data.username, form_data.password)
     if not user:
@@ -36,6 +41,10 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {'access_token': access_token, 'token_type': 'bearer'}
 
 
-@router.get('/user', response_model=User)
+@router.get(
+    '/user',
+    response_model=User,
+    status_code=status.HTTP_200_OK,
+)
 async def read_users_me(current_user: User = Depends(get_current_active_user)):
     return current_user

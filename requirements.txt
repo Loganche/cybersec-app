@@ -1,5 +1,6 @@
 fastapi[all]
 passlib[bcrypt]
 python-jose[cryptography]
+sentry-sdk[fastapi]
 sqlalchemy
 tinkoff-investments
