@@ -18,3 +18,6 @@ test:
 
 load_test:
 	locust
+
+fuzz_test:
+	python fuzz.py

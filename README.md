@@ -21,14 +21,20 @@
 
 ---
 
-### CI
+### CI & CD
 
-- Tox
 - Flake8
 - PyRight
 - Pre-Commit Framework
 - Git Hooks
 - Github Actions
-- Locust
-- fuzz-test
 - setup.py
+
+---
+
+### Testing
+
+- Locust
+- pythonfuzz
+- Tox
+- pytest

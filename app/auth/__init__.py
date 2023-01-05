@@ -35,7 +35,7 @@ def verify_password(plain_password: str, hashed_password: str):
 
 
 def get_password_hash(password: str):
-    return pwd_context.hash(password)
+    return pwd_context.hash(password + os.environ['SECRET_KEY'])
 
 
 async def get_user(username: str):
@@ -87,7 +87,6 @@ async def get_current_user(security_scopes: SecurityScopes, token: str = Depends
         token_data = TokenData(scopes=token_scopes, username=username)
     except (JWTError, ValidationError):
         raise credentials_exception
-    print(token_data.username)
     user = await get_user(username=token_data.username)
     if user is None:
         raise credentials_exception
