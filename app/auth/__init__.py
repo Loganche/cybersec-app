@@ -30,12 +30,16 @@ oauth2_scheme = OAuth2PasswordBearer(
 )
 
 
+def salt_password(plain_password: str):
+    return plain_password + os.environ['SECRET_KEY']
+
+
 def verify_password(plain_password: str, hashed_password: str):
     return pwd_context.verify(plain_password, hashed_password)
 
 
-def get_password_hash(password: str):
-    return pwd_context.hash(password + os.environ['SECRET_KEY'])
+def get_password_hash(plain_password: str = Depends(salt_password)):
+    return pwd_context.hash(plain_password)
 
 
 async def get_user(username: str):
