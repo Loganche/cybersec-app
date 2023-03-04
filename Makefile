@@ -5,6 +5,7 @@ build:
 
 build_dev: build
 	pip install -r requirements.dev.txt
+	pip install -r requirements.dev.fuzz.txt
 
 run:
 	uvicorn app.bin.app:app --reload
